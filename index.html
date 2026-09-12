@@ -90,13 +90,78 @@
     .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
     .menu-toggle span { background: white; height: 3px; width: 25px; margin: 4px 0; }
 
-    @media (max-width: 768px) {
-      nav { display: none; flex-direction: column; background: var(--color-primario);
-            position: absolute; top: 60px; right: 0; width: 220px; padding: 15px;
-            border-radius: 4px; opacity: 0; transform: translateY(-20px); }
-      nav.active { display: flex; opacity: 1; transform: translateY(0); }
-      .menu-toggle { display: flex; }
-    }
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column; /* en columna tipo cascada */
+    background: linear-gradient(to right, #000000, var(--color-linea-naranja));
+    position: fixed;   /* fijo para que quede por encima */
+    top: 0;
+    right: 0;
+    width: 30%;        /* ocupa un tercio de la pantalla */
+    height: 100%;      /* ocupa todo el alto */
+    padding: 20px;
+    opacity: 0;
+    transform: translateX(100%); /* oculto hacia la derecha */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition-delay: 0.2s; /* pequeño retraso al abrir */
+    z-index: 9999;
+  }
+
+  nav.active {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0); /* se desliza desde la derecha */
+  }
+
+  nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: background 0.2s ease, opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  nav.active a {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* efecto escalonado: cada enlace aparece con retraso */
+  nav.active a:nth-child(1) { transition-delay: 0.3s; }
+  nav.active a:nth-child(2) { transition-delay: 0.5s; }
+  nav.active a:nth-child(3) { transition-delay: 0.7s; }
+  nav.active a:nth-child(4) { transition-delay: 0.9s; }
+
+  nav a:hover {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    transition-delay: 0s; /* hover instantáneo */
+  }
+
+  nav a:not(:hover) {
+    transition: background 0.3s ease 0.15s; /* desmarque con mínimo delay */
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 10000; /* el botón también queda por encima */
+  }
+
+  .menu-toggle span {
+    background: white;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+  }
+}
+
 
     section { padding: 60px 20px; text-align: center; }
 
@@ -156,14 +221,27 @@
                   border: none; border-radius: 4px; cursor: pointer; }
     form button:hover { background: var(--color-acento); }
 
-   footer {
-  background: linear-gradient(to right, #000000, var(--color-linea-naranja));
-  color: white;
+footer {
+  background: transparent;   /* fondo transparente */
+  color: #333;
   text-align: center;
-  padding: 10px;        /* más fino */
+  padding: 10px;
   margin-top: 40px;
-  font-size: 0.9em;     /* texto un poco más pequeño */
+  font-size: 0.9em;
+  position: relative;        /* necesario para el pseudo-elemento */
 }
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;                    /* línea arriba del footer */
+  left: 50%;                 /* punto de referencia al centro */
+  transform: translateX(-50%);
+  width: 75%;                /* ocupa 3/4 partes del ancho */
+  height: 2px;               /* grosor fino */
+  background: linear-gradient(to right, #000000, var(--color-linea-naranja));
+}
+
 
       /* Botón flotante de WhatsApp */
      .btn-whatsapp {
@@ -242,7 +320,7 @@
     <a href="#inicio" class="logo">
       <img src="logo-n.png" alt="Logo Nealítica" class="logo-img">
     </a>
-    <h1>Nicolás Consultoría Estadística</h1>
+    <h1>Nealitica Consultora</h1>
     <div class="menu-toggle" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -297,18 +375,18 @@
   <div><strong>Dirección:</strong> Posadas, Misiones, Argentina</div>
 </div>
     <form action="mailto:contacto@nicolasconsultoria.com" method="post" enctype="text/plain">
-      <label>Nombre:</label>
+      <label>><strong>Nombre:</strong></label>
       <input type="text"name="nombre" required>
-      <label>Email:</label>
+      <label>><strong>Email:</strong></label>
       <input type="email" name="email" required>
-      <label>Consulta:</label>
+      <label>><strong>Consulta:</strong></label>
       <textarea name="mensaje" rows="5" required></textarea>
       <button type="submit">Enviar Consulta</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2026 Nicolás Consultoría Estadística</p>
+    <p>&copy; 2026 By: Paragua_ </p>
   </footer>
 
   <script>
