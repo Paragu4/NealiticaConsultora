@@ -91,24 +91,24 @@
     .menu-toggle span { background: white; height: 3px; width: 25px; margin: 4px 0; }
 
 @media (max-width: 768px) {
-nav {
-  display: none;
-  flex-direction: column;
-  background: linear-gradient(to right, #000000, var(--color-linea-naranja));
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 30%;
-  height: 100%;
-  padding: 20px;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  transition-delay: 0.2s;
-  z-index: 10001;
-  border-left: 3px solid var(--color-acento); /* reborde visible */
-  box-shadow: -4px 0 10px rgba(0,0,0,0.3);   /* sombra para diferenciarlo */
-}
+  nav {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(to right, #000000, var(--color-linea-naranja));
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    padding: 20px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition-delay: 0.2s;
+    z-index: 10001;
+    border-left: 3px solid var(--color-acento);
+    box-shadow: -4px 0 10px rgba(0,0,0,0.3);
+  }
 
   nav.active {
     display: flex;
@@ -141,21 +141,25 @@ nav {
   nav a:hover {
     background: rgba(255,255,255,0.2);
     border-radius: 4px;
-    transition-delay: 0s; /* hover instantáneo */
+    transition-delay: 0s;
   }
 
   nav a:not(:hover) {
-    transition: background 0.3s ease 0.15s; /* desmarque con mínimo delay */
+    transition: background 0.3s ease 0.15s;
   }
 
   .menu-toggle {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    position: fixed;   /* se mantiene fijo al desplazarse */
+    position: fixed;
     top: 15px;
     right: 15px;
-    z-index: 10002;    /* siempre visible */
+    z-index: 10002;
+    background: rgba(0,0,0,0.6);   /* fondo oscuro */
+    padding: 8px;
+    border-radius: 10px;           /* cuadro redondeado */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4); /* sombra para diferenciar */
   }
 
   .menu-toggle span {
@@ -163,9 +167,9 @@ nav {
     height: 3px;
     width: 25px;
     margin: 4px 0;
+    border-radius: 2px; /* bordes suaves en las líneas */
   }
 
-  /* Overlay para cerrar al hacer clic afuera */
   .overlay {
     display: none;
     position: fixed;
