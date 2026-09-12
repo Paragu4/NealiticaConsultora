@@ -143,7 +143,7 @@
              padding: 20px; margin-top: 40px; }
 
       /* Botón flotante de WhatsApp */
-  .btn-whatsapp {
+   .btn-whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -159,22 +159,22 @@
     transition: all 0.3s ease;
     z-index: 1000;
     overflow: hidden;
-    width: 55px;
+    width: 60px; /* tamaño cerrado */
     height: 55px;
     white-space: nowrap;
   }
 
-  /* Ícono pequeño y centrado */
+  /* Ícono visible siempre */
   .btn-whatsapp .wp-icon {
     width: 28px;
     height: 28px;
     flex-shrink: 0;
+    margin-right: 8px;
   }
 
   /* Texto oculto inicialmente */
   .btn-whatsapp span {
     opacity: 0;
-    margin-left: 8px;
     transition: opacity 0.3s ease;
     font-size: 14px;
     line-height: 1;
@@ -182,9 +182,9 @@
 
   /* Al pasar el mouse se expande y muestra texto */
   .btn-whatsapp:hover {
-    width: 210px;
+    width: 230px; /* expansión suficiente para todo el texto */
     justify-content: flex-start;
-    padding-left: 12px;
+    padding-left: 15px;
   }
 
   .btn-whatsapp:hover span {
@@ -221,9 +221,7 @@
     </div>
       <!-- Botón flotante de WhatsApp -->
   <a class="btn-whatsapp" href="https://wa.me/543761234567" target="_blank">
-  <!-- Ícono de WhatsApp -->
-  <img src="wp-icon.png" alt="" class="wp-icon">
-  <!-- Texto que aparece al pasar el mouse -->
+  <img src="wp-icon.png" alt="WhatsApp" class="wp-icon">
   <span>Comunicate vía WhatsApp</span>
 </a>
 
