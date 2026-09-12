@@ -93,25 +93,25 @@
 @media (max-width: 768px) {
   nav {
     display: none;
-    flex-direction: column; /* en columna tipo cascada */
+    flex-direction: column;
     background: linear-gradient(to right, #000000, var(--color-linea-naranja));
-    position: fixed;   /* fijo para que quede por encima */
+    position: fixed;
     top: 0;
     right: 0;
-    width: 30%;        /* ocupa un tercio de la pantalla */
-    height: 100%;      /* ocupa todo el alto */
+    width: 30%;        /* ancho angosto */
+    height: 100%;
     padding: 20px;
     opacity: 0;
-    transform: translateX(100%); /* oculto hacia la derecha */
+    transform: translateX(100%);
     transition: transform 0.5s ease, opacity 0.5s ease;
-    transition-delay: 0.2s; /* pequeño retraso al abrir */
-    z-index: 9999;
+    transition-delay: 0.2s;
+    z-index: 10001;    /* encima del overlay */
   }
 
   nav.active {
     display: flex;
     opacity: 1;
-    transform: translateX(0); /* se desliza desde la derecha */
+    transform: translateX(0);
   }
 
   nav a {
@@ -131,7 +131,6 @@
     transform: translateX(0);
   }
 
-  /* efecto escalonado: cada enlace aparece con retraso */
   nav.active a:nth-child(1) { transition-delay: 0.3s; }
   nav.active a:nth-child(2) { transition-delay: 0.5s; }
   nav.active a:nth-child(3) { transition-delay: 0.7s; }
@@ -151,7 +150,10 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    z-index: 10000; /* el botón también queda por encima */
+    position: fixed;   /* se mantiene fijo al desplazarse */
+    top: 15px;
+    right: 15px;
+    z-index: 10002;    /* siempre visible */
   }
 
   .menu-toggle span {
@@ -160,8 +162,21 @@
     width: 25px;
     margin: 4px 0;
   }
-}
 
+  /* Overlay para cerrar al hacer clic afuera */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 10000;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+}
 
     section { padding: 60px 20px; text-align: center; }
 
@@ -316,21 +331,30 @@ footer::before {
   </style>
 </head>
 <body>
-  <header>
-    <a href="#inicio" class="logo">
-      <img src="logo-n.png" alt="Logo Nealítica" class="logo-img">
-    </a>
-    <h1>Nealitica Consultora</h1>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-    <nav id="menu">
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#clientes">Clientes</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+<header>
+  <a href="#inicio" class="logo">
+    <img src="logo-n.png" alt="Logo Nealítica" class="logo-img">
+  </a>
+  <h1>Nealitica Consultora</h1>
+
+  <!-- Botón hamburguesa -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Menú cascada -->
+  <nav id="menu">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<!-- Overlay para cerrar al hacer clic afuera -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
   <section id="inicio" class="hero">
     <div class="hero-box">
@@ -405,7 +429,14 @@ footer::before {
       images[index].classList.add('active');      // Muestra la nueva
     }, 4000); // Cambia cada 4 segundos
   </script>
-
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  const overlay = document.getElementById("overlay");
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+</script>
 </body>
 </html>
 
