@@ -265,54 +265,50 @@ footer::before {
 
 
       /* Botón flotante de WhatsApp */
-     .btn-whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    overflow: hidden;
-    width: 60px;   /* tamaño cerrado */
-    height: 55px;
-    white-space: nowrap;
-    padding: 0 10px; /* espacio para el ícono */
-  }
+ .btn-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;       /* verde WhatsApp */
+      border-radius: 50px;       /* redondeado */
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      overflow: hidden;
+      width: 60px;   /* cerrado: solo ícono */
+      height: 60px;
+      padding: 0 12px;
+    }
 
-  /* Ícono visible siempre */
-  .btn-whatsapp .wp-icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-  }
+    .btn-whatsapp img {
+      width: 30px;   /* tamaño de tu imagen JPG */
+      height: 30px;
+      flex-shrink: 0;
+    }
 
-  /* Texto oculto inicialmente */
-  .btn-whatsapp span {
-    opacity: 0;
-    margin-left: 8px;
-    transition: opacity 0.3s ease;
-    font-size: 14px;
-    line-height: 1;
-  }
+    .btn-whatsapp span {
+      opacity: 0;
+      margin-left: 8px;
+      transition: opacity 0.3s ease;
+      font-size: 14px;
+      line-height: 1;
+      white-space: nowrap;
+    }
 
-  /* Al pasar el mouse se expande y muestra texto */
-  .btn-whatsapp:hover {
-    width: 240px; /* expansión suficiente para todo el texto */
-    justify-content: flex-start;
-    padding-left: 15px;
-  }
+    /* Al pasar el mouse se expande y aparece el texto */
+    .btn-whatsapp:hover {
+      width: 220px;  /* expansión suficiente para texto */
+      justify-content: flex-start;
+    }
 
-  .btn-whatsapp:hover span {
-    opacity: 1;
-  }
+    .btn-whatsapp:hover span {
+      opacity: 1;
+    }
 
        .contacto {
     max-width: 500px;          /* ancho del bloque */
