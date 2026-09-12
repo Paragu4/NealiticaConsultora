@@ -221,6 +221,18 @@
       document.getElementById("menu").classList.toggle("active");
     }
   </script>
+  <script>
+    // Slider automático para las imágenes del hero
+    let index = 0;
+    const images = document.querySelectorAll('.hero-box img');
+
+    setInterval(() => {
+      images[index].classList.remove('active');   // Oculta la actual
+      index = (index + 1) % images.length;        // Avanza al siguiente
+      images[index].classList.add('active');      // Muestra la nueva
+    }, 4000); // Cambia cada 4 segundos
+  </script>
+
 </body>
 </html>
 
@@ -295,15 +307,3 @@
   </div>
   <a class="btn-whatsapp" href="https://wa.me/543761234567" target="_blank">📱 Contactar por WhatsApp</a>
 </section>
-
-<script>
-    // Slider automático para las imágenes del hero
-    let index = 0;
-    const images = document.querySelectorAll('.hero-box img');
-
-    setInterval(() => {
-      images[index].classList.remove('active');   // Oculta la actual
-      index = (index + 1) % images.length;        // Avanza al siguiente
-      images[index].classList.add('active');      // Muestra la nueva
-    }, 4000); // Cambia cada 4 segundos
-  </script>
