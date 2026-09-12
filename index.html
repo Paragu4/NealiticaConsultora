@@ -283,3 +283,27 @@
   </svg>
   <span>Comunicate vía WhatsApp</span>
 </a>
+<section id="inicio" class="hero">
+  <div class="hero-box">
+    <img src="foto1.jpg" class="active" alt="Imagen 1">
+    <img src="foto2.jpg" alt="Imagen 2">
+    <img src="foto3.jpg" alt="Imagen 3">
+    <div class="hero-text">
+      <h2>Consultoría en Estadística y Censos</h2>
+      <p>Transformamos datos en conocimiento para decisiones estratégicas.</p>
+    </div>
+  </div>
+  <a class="btn-whatsapp" href="https://wa.me/543761234567" target="_blank">📱 Contactar por WhatsApp</a>
+</section>
+
+<script>
+  // Slider automático para las imágenes del hero
+  let index = 0;
+  const images = document.querySelectorAll('.hero-box img');
+
+  setInterval(() => {
+    images[index].classList.remove('active');   // Oculta la actual
+    index = (index + 1) % images.length;        // Avanza al siguiente
+    images[index].classList.add('active');      // Muestra la nueva
+  }, 4000); // Cambia cada 4 segundos
+</script>
