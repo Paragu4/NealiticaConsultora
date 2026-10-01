@@ -616,6 +616,127 @@ footer::before {
       }
     }
 
+
+    /* ===== AJUSTE FINAL PARA CELULARES ===== */
+    @media (max-width: 768px) {
+      section {
+        padding: 32px 12px;
+      }
+
+      .container {
+        padding: 12px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 8px 0;
+      }
+
+      .card {
+        min-height: 105px;
+        padding: 12px;
+        gap: 10px;
+        align-items: flex-start;
+        border-radius: 12px;
+      }
+
+      .card .icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 10px;
+      }
+
+      .card .icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .card h3 {
+        margin-bottom: 4px;
+        font-size: .92rem;
+        line-height: 1.2;
+      }
+
+      .card p {
+        font-size: .78rem;
+        line-height: 1.3;
+      }
+    }
+
+    /* Celulares angostos: una tarjeta por fila, pero compacta */
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .card {
+        min-height: 88px;
+        padding: 11px 12px;
+        gap: 11px;
+      }
+
+      .card .icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+      }
+
+      .card .icon svg {
+        width: 27px;
+        height: 27px;
+      }
+
+      .card h3 {
+        font-size: .9rem;
+        line-height: 1.2;
+      }
+
+      .card p {
+        font-size: .8rem;
+        line-height: 1.28;
+      }
+    }
+
+    /* Celulares muy chicos */
+    @media (max-width: 380px) {
+      section {
+        padding: 25px 9px;
+      }
+
+      .container {
+        padding: 8px;
+      }
+
+      .card {
+        min-height: 82px;
+        padding: 10px;
+        gap: 9px;
+      }
+
+      .card .icon {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+      }
+
+      .card .icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .card h3 {
+        font-size: .86rem;
+      }
+
+      .card p {
+        font-size: .74rem;
+        line-height: 1.25;
+      }
+    }
+
   </style>
 </head>
 <body>
