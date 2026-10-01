@@ -737,6 +737,75 @@ footer::before {
       }
     }
 
+    /* Sección con dos columnas */
+.seccion {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* Línea divisoria clara */
+.seccion::after {
+  content: "";
+  display: block;
+  width: 75%;               /* 3/4 del ancho */
+  height: 5px;              /* más gruesa */
+  background: #e5e7eb;      /* gris claro */
+  margin: 25px auto 0 auto; /* centrada */
+  border-radius: 3px;
+}
+
+.col {
+  flex: 1;
+  min-width: 300px;
+  padding: 0 20px;
+}
+
+h2 {
+  color: #facc15; /* amarillo dorado */
+  margin-bottom: 15px;
+  font-size: 1.6em;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #e2e8f0;
+}
+
+/* Lista ordenada sin recuadros ni subrayados */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 8px;       /* separación más cercana */
+  font-size: 1em;
+  color: #f1f5f9;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .seccion {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .col {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  p, ul li {
+    font-size: 0.95em;
+  }
+}
   </style>
 </head>
 <body>
@@ -875,7 +944,68 @@ footer::before {
       </article>
     </section>
   </main>
- 
+ <!-- Sección -->
+  <section class="seccion">
+  <div class="col izquierda">
+    <h2>Formación</h2>
+    <p>
+      La capacitación y jerarquización de los talentos humanos en la función pública permite un mejor desarrollo de los objetivos de gestión.
+    </p>
+    <p>
+      Las capacitaciones son confeccionadas a medida para cada equipo de gestión. Contamos con profesionales de diferentes áreas de gestión y comunicación.
+    </p>
+  </div>
+
+  <div class="col derecha">
+    <h2>Capacitaciones introductorias</h2>
+    <ul>
+      <li>Comunicación gubernamental en municipios</li>
+      <li>Comunicación gubernamental y relación con la prensa</li>
+      <li>Comunicación gubernamental digital</li>
+      <li>Comunicación gubernamental con perspectiva de género</li>
+      <li>Comunicación de riesgo de desastre</li>
+      <li>Comunicación de crisis</li>
+      <li>Formación de voceros gubernamentales</li>
+      <li>Taller de políticas públicas. Confección de proyectos</li>
+    </ul>
+  </div>
+</section>
+<!-- Sección 2 -->
+  <section class="seccion">
+    <div class="col izquierda">
+      <h2>Investigación</h2>
+      <p>
+        Diagnóstico y evaluación del desempeño del gobierno en la opinión pública.
+      </p>
+    </div>
+    <div class="col derecha">
+      <h2>Áreas de análisis</h2>
+      <ul>
+        <li>Encuestas de percepción ciudadana</li>
+        <li>Estudios de impacto comunicacional</li>
+        <li>Evaluación de políticas públicas</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sección 3 -->
+  <section class="seccion">
+    <div class="col izquierda">
+      <h2>Comunicación digital</h2>
+      <p>
+        Administración del ecosistema digital y gestión de datos para campañas.
+      </p>
+    </div>
+    <div class="col derecha">
+      <h2>Servicios digitales</h2>
+      <ul>
+        <li>Gestión de redes sociales</li>
+        <li>Informes de avance</li>
+        <li>Pautado y campañas</li>
+      </ul>
+    </div>
+  </section>
+
   <footer>
     <p>&copy; 2026 By: Paragua_ </p>
   </footer>
