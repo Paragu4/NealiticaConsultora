@@ -90,25 +90,81 @@
     .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
     .menu-toggle span { background: white; height: 3px; width: 25px; margin: 4px 0; }
 
-@media (max-width: 768px) {
-  nav {
-    display: none;
-    flex-direction: column;
-    background: linear-gradient(to right, #000000, var(--color-linea-naranja));
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 100%;
-    padding: 20px;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    transition-delay: 0.2s;
-    z-index: 10001;
-    border-left: 3px solid var(--color-acento);
-    box-shadow: -4px 0 10px rgba(0,0,0,0.3);
-  }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .hero h2{ font-size:24px; }
+    }
+    @media (max-width:640px){
+      header{ padding:10px 12px; height:64px; }
+      .grid{ grid-template-columns: 1fr; }
+      .hero{ flex-direction:column; align-items:flex-start; gap:12px; }
+      .icon{ width:56px; height:56px; min-width:56px; }
+    }
+    
+    
+    /* Container */
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      padding:28px 20px;
+      box-sizing:border-box;
+    }
+
+    /* Hero */
+    .hero{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+    .hero .title{
+      max-width:720px;
+    }
+    .hero h2{ margin:0 0 8px 0; font-size:28px; }
+    .hero p{ margin:0; color:var(--muted); line-height:1.5; }
+
+    /* Grid de servicios */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:var(--gap);
+      margin-top:18px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      transition: transform .22s ease, box-shadow .22s ease;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .card:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(2,6,23,0.7);
+    }
+
+    .icon{
+      width:64px;
+      height:64px;
+      min-width:64px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--glass);
+      flex-shrink:0;
+    }
+    .icon svg{ width:36px; height:36px; }
+
+    .card h3{ margin:0 0 6px 0; font-size:16px; }
+    .card p{ margin:0; color:var(--muted); font-size:14px; line-height:1.45; }
 
   nav.active {
     display: flex;
@@ -314,6 +370,7 @@ footer::before {
   </style>
 </head>
 <body>
+    
 <header>
   <a href="index.html" class="logo">
     <img src="logo-n.png" alt="Logo Nealítica" class="logo-img">
@@ -343,7 +400,108 @@ footer::before {
   <span>Comunicate vía WhatsApp</span>
 </a>
 
+ <!-- Contenedor -->
+  <main class="container" role="main">
+    <section class="hero" aria-labelledby="servicios-title">
+      <div class="title">
+        <h2 id="servicios-title">Nuestros servicios</h2>
+        <p>Diseñamos estrategias de comunicación pública, formación y gestión digital pensadas para equipos de gobierno y organizaciones.</p>
+      </div>
+    </section>
 
+    <!-- Grid de tarjetas -->
+    <section class="grid" aria-label="Lista de servicios">
+      <!-- Formación -->
+      <article class="card" role="article" aria-labelledby="s1">
+        <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#6EE7B7,#10B981);">
+          <!-- icono simple -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#04201a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L20 6 L12 10 L4 6 Z"></path>
+            <path d="M4 10v6a2 2 0 0 0 2 2h12"></path>
+            <path d="M8 14h8"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="s1">Formación</h3>
+          <p>Capacitación de equipos de gobierno en comunicación, políticas públicas y manejo de medios.</p>
+        </div>
+      </article>
+
+      <!-- Investigación -->
+      <article class="card" role="article" aria-labelledby="s2">
+        <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#93C5FD,#3B82F6);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#04203a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="s2">Investigación</h3>
+          <p>Diagnóstico y evaluación del desempeño del gobierno en la opinión pública y análisis de impacto.</p>
+        </div>
+      </article>
+
+      <!-- Capacitación estratégica -->
+      <article class="card" role="article" aria-labelledby="s3">
+        <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#FDE68A,#F59E0B);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3a2a00" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12h18"></path>
+            <path d="M6 6h12"></path>
+            <path d="M6 18h12"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="s3">Capacitación estratégica</h3>
+          <p>Diseño de norte estratégico, construcción del mensaje y manual de comunicación gubernamental.</p>
+        </div>
+      </article>
+
+      <!-- Comunicación digital -->
+      <article class="card" role="article" aria-labelledby="s4">
+        <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#C7B2FF,#7C3AED);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f0f3a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M8 9h8"></path>
+            <path d="M8 13h6"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="s4">Comunicación digital</h3>
+          <p>Administración del ecosistema digital, gestión de datos, informes de avance, pautado y campañas.</p>
+        </div>
+      </article>
+
+      <!-- Diseño y creatividad -->
+      <article class="card" role="article" aria-labelledby="s5">
+        <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#FBCFE8,#F472B6);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2a0b1a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21l18-18"></path>
+            <circle cx="7" cy="7" r="2"></circle>
+            <path d="M14 14l6 6"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="s5">Diseño y creatividad</h3>
+          <p>Diseño y aplicación gráfica de la estrategia de comunicación y piezas para campañas.</p>
+        </div>
+      </article>
+
+      <!-- Gestión de proyectos -->
+      <article class="card" role="article" aria-labelledby="s6">
+        <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#A7F3D0,#059669);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#042a1f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7h18"></path>
+            <path d="M6 11h12"></path>
+            <path d="M9 15h6"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="s6">Gestión de proyectos</h3>
+          <p>Planificación, seguimiento y evaluación de iniciativas comunicacionales y campañas públicas.</p>
+        </div>
+      </article>
+    </section>
+  </main>
  
   <footer>
     <p>&copy; 2026 By: Paragua_ </p>
